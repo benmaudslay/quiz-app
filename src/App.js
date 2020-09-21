@@ -1,42 +1,56 @@
-import React from 'react';
+import React, { useState } from "react";
+import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { ApolloProvider } from "react-apollo";
 
-// import ApolloClient from 'apollo-boost';
-import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client"
-import { setContext } from '@apollo/client/link/context';
+import Questions from "./components/questions";
+import QuestionModal from "./components/question-modal";
 
-import { ApolloProvider } from 'react-apollo';
+import Add from "./assets/add.svg";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
-import Questions from "./components/questions"
-import './App.css';
-
-const token = "e0bc14c1-ca13-4efb-9f8c-5c90319a62ff"
-
-const httpLink = createHttpLink({ uri: "https://api.8base.com/ckf57jmd9000208l10o1t0id7" })
+const token = process.env.REACT_APP_TOKEN;
+console.log(token);
+const httpLink = createHttpLink({
+  uri: "https://api.8base.com/ckf57jmd9000208l10o1t0id7",
+});
 
 const authLink = setContext((_, { headers }) => {
-
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : ''
-    }
-  }
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
 });
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
-})
-
+  cache: new InMemoryCache(),
+});
 
 const App = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <ApolloProvider client={client}>
       <div className="App">
+        <header>
+          <div>GOT Quiz</div>
+        </header>
         <Questions />
+        <button className="add-question" onClick={(_) => setModalOpen(true)}>
+          <img src={Add} alt="Click to create a new question" />
+        </button>
+        <QuestionModal isOpen={modalOpen} closeModal={closeModal} />
       </div>
     </ApolloProvider>
-  )
-}
+  );
+};
 
 export default App;

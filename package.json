@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@8base-react/file-input": "^1.4.16",
     "@apollo/client": "^3.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -13,7 +14,10 @@
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-modal": "^3.11.2",
+    "react-scripts": "3.4.3",
+    "react-tagsinput": "^3.19.0",
+    "react-toastify": "^6.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
