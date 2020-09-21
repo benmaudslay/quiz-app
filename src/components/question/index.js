@@ -25,6 +25,7 @@ const Question = ({ question, onNextClicked }) => {
     <div className="question">
       <div className="question-image-holder">
         <img
+          className="question-image"
           src={question.image && question.image.downloadUrl}
           alt={question}
         />
