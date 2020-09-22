@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 const token = process.env.REACT_APP_TOKEN;
-console.log(token);
+
 const httpLink = createHttpLink({
   uri: "https://api.8base.com/ckf57jmd9000208l10o1t0id7",
 });
