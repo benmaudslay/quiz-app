@@ -2,6 +2,7 @@
   "name": "8base-quizapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://benmaudslay.github.io/quiz-app",
   "dependencies": {
     "@8base-react/file-input": "^1.4.16",
     "@apollo/client": "^3.2.0",
@@ -9,6 +10,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "apollo-boost": "^0.4.9",
+    "gh-pages": "^3.1.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "react": "^16.13.1",
@@ -23,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
