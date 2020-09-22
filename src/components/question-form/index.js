@@ -63,6 +63,7 @@ const QuestionForm = ({ closeModal, questionCreate }) => {
         placeholder="Enter your GOT related question"
         onChange={handleInputChange}
         value={questionForm.question}
+        className="question-input"
       />
       <TagsInput
         value={questionForm.options}
